@@ -1,0 +1,13 @@
+graph TD
+    subgraph "digital.vasic.uicomponents"
+        A[Theme.kt]
+        B[Animations.kt]
+        C[Accessibility.kt]
+    end
+
+    A --> CM[Compose Material3]
+    A --> CU[Compose UI]
+    B --> CA[Compose Animation]
+    B --> CF[Compose Foundation]
+    C --> CU
+    C --> CS[Compose Semantics]

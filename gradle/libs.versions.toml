@@ -1,0 +1,39 @@
+# UI-Components-KMP - Kotlin Multiplatform Version Catalog
+
+[versions]
+kotlin = "2.0.20"
+agp = "8.7.3"
+compose = "1.7.3"
+compose-plugin = "1.7.3"
+kotest = "5.9.1"
+
+[libraries]
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "compose" }
+compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose" }
+compose-ui-util = { module = "org.jetbrains.compose.ui:ui-util", version.ref = "compose" }
+kotest-framework-engine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" }
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+
+[bundles]
+compose = [
+    "compose-runtime",
+    "compose-foundation",
+    "compose-material3",
+    "compose-ui",
+    "compose-ui-util",
+]
+
+testing = [
+    "kotlin-test",
+    "kotest-framework-engine",
+    "kotest-assertions-core",
+]
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
