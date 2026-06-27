@@ -11,16 +11,16 @@ version = "1.0.0"
 kotlin {
     androidTarget {
         compilations.all {
-            kotlinOptions {
-                jvmTarget = "11"
+            compilerOptions.configure {
+                jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
             }
         }
     }
 
     jvm("desktop") {
         compilations.all {
-            kotlinOptions {
-                jvmTarget = "11"
+            compilerOptions.configure {
+                jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
             }
         }
     }
@@ -36,7 +36,14 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.bundles.compose)
+            // iter-82: Use compose plugin DSL instead of version catalog to avoid artifact version mismatch.
+            // Compose MP 1.11.0 uses internal versioning for material3 (pinned at 1.9.0) and other
+            // sub-artifacts; compose.material3 from the plugin DSL resolves the correct version automatically.
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.ui)
+            implementation(compose.uiUtil)
         }
 
         commonTest.dependencies {
